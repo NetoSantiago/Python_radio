@@ -13,14 +13,14 @@ p = pyaudio.PyAudio()
 u_sock = sk.socket(sk.AF_INET, sk.SOCK_DGRAM)
 u_sock.bind(('127.0.0.1', int(sys.argv[1])))
 stream = p.open(format=pyaudio.paInt16,
-         		channels = 2,
-   	            rate = 44100,
-       		    output = True,
-       		    frames_per_buffer = CHUNK)
+			channels = 2,
+			rate = 44100,
+			output = True,
+			frames_per_buffer = CHUNK)
 		
 def make_connection():
-	c_sock = sk.socket(sk.AF_INET, sk.SOCK_STREAM)
-	c_sock.connect(ADDR)
+	c_sock = sk.socket(sk.AF_INET, sk.SOCK_STREAM)#AF_INET = IPV4 ; SOCK_STREAM = TCP
+	c_sock.connect(ADDR)# The ADDR doesn't need to be the same. You can change the variables PORT and HOST.
 	menu(c_sock)
 	
 def menu(c_sock, handshake = False):
